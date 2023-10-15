@@ -1,0 +1,19 @@
+on: push
+
+name: Java Tests
+
+jobs:
+  Tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'oracle'
+
+      - name: Run All Tests
+        working-directory: ./java-dsa
+        run: ./mvnw test
