@@ -1,6 +1,8 @@
 package tree
 
 func BFS(n *Node, f func(*Node)) {
+	// big o time complexity: O(n)
+	// big o space complexity: O(n)
 	if n == nil {
 		return
 	}
