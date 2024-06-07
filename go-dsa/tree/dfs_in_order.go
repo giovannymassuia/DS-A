@@ -25,6 +25,8 @@ func DFSInOrderIterative(n *Node, f func(*Node)) {
 		current = stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
 
+		f(current)
+
 		current = current.Right
 	}
 }

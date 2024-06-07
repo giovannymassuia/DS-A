@@ -16,6 +16,7 @@ func DFSPreOrderIterative(n *Node, f func(*Node)) {
 
 	for current != nil || len(stack) > 0 {
 		for current != nil {
+			f(current)
 			stack = append(stack, current)
 			current = current.Left
 		}
