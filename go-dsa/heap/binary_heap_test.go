@@ -18,72 +18,72 @@ func TestMaxBinaryHeap(t *testing.T) {
 
 	// Array: [100, 45, 50, 40, 20, 15, 25, 10]
 	/* Tree representation
-				 100
-			   /     \
-			  45	  50
-			 /  \    /  \
-			40  20  15  25
-	 */
+		 100
+	   /     \
+	  45	  50
+	 /  \    /  \
+	40  20  15  25
+	*/
 
 	tests := []struct {
-		name   string
+		name         string
 		expectResult int
-		expectArray []int
+		expectArray  []int
 	}{
 		{"Peek", 100, []int{100, 45, 50, 40, 20, 15, 25, 10}},
 		/* Tree after peek
-				 100
-			   /     \
-			  45	  50
-			 /  \    /  \
-			40  20  15  25
-		 */
+			 100
+		   /     \
+		  45	  50
+		 /  \    /  \
+		40  20  15  25
+		*/
 		{"Pop", 100, []int{50, 45, 25, 40, 20, 15, 10}},
 		/* Tree after pop
-				 50
-			   /     \
-			  45      25
-			 /  \    /  \
-			40  20  15  10
-		 */
+			 50
+		   /     \
+		  45      25
+		 /  \    /  \
+		40  20  15  10
+		*/
 		{"Pop", 50, []int{45, 40, 25, 10, 20, 15}},
 		/* Tree after pop
-				 45
-			   /     \
-			  40      25
-			 /  \    /  \
-			10  20  15
-		 */
+			 45
+		   /     \
+		  40      25
+		 /  \    /  \
+		10  20  15
+		*/
 		{"Delete", 45, []int{45, 20, 25, 10, 15}},
 		/* Tree after delete
-				 45
-			   /     \
-			  20      25
-			 /  \    /
-			10  15
-		 */
+			 45
+		   /     \
+		  20      25
+		 /  \    /
+		10  15
+		*/
 		{"Peek", 45, []int{45, 20, 25, 10, 15}},
 		/* Tree after peek
-				 45
-			   /     \
-			  20      25
-			 /  \    /
-			10  15
-		 */
+			 45
+		   /     \
+		  20      25
+		 /  \    /
+		10  15
+		*/
 		{"Pop", 45, []int{25, 20, 15, 10}},
 		/* Tree after pop
-				 25
-			   /     \
-			  20      15
-			 /
-			10
-		 */
+			 25
+		   /     \
+		  20      15
+		 /
+		10
+		*/
 		{"Pop", 25, []int{20, 10, 15}},
 		/* Tree after pop
-				 20
-			   /     \
-			  10      15
-		 */
+			 20
+		   /     \
+		  10      15
+		*/
 	}
 
 	// should run tests in order they are defined
@@ -112,9 +112,9 @@ func TestMinBinaryHeap(t *testing.T) {
 	*/
 
 	tests := []struct {
-		name   string
+		name         string
 		expectResult int
-		expectArray []int
+		expectArray  []int
 	}{
 		{"Peek", 10, []int{10, 20, 15, 40, 50, 100, 25, 45}},
 		{"Pop", 10, []int{15, 20, 25, 40, 50, 100, 45}},
@@ -127,6 +127,26 @@ func TestMinBinaryHeap(t *testing.T) {
 
 	// should run tests in order they are defined
 	runTests(t, tests, heap, 20)
+}
+
+func TestHeapifyArray(t *testing.T) {
+	arr := []int{10, 9, 8, 7, 6, 5, 4, 3, 2, 1}
+	heap := HeapifyArray(arr, MinHeap)
+
+	expectedArr := []int{1, 2, 4, 3, 6, 5, 8, 10, 7, 9}
+	/* Tree representation
+				  1
+			   /     \
+			  2 	  4
+			 /  \    /  \
+			3    6  5    8
+	       /  \
+	      10   7
+	*/
+
+	if !compareArray(heap.GetData(), expectedArr) {
+		t.Errorf("Expected %v but got %v", expectedArr, heap.GetData())
+	}
 }
 
 func runTests(t *testing.T, tests []struct {

@@ -5,19 +5,37 @@ package heap
 // Arr[(2*i)+1]	Returns the left child node
 // Arr[(2*i)+2]	Returns the right child node
 type BinaryHeap struct {
-	data []int
+	data     []int
 	capacity int
-	size int
+	size     int
 	heapType HeapType
 }
 
 func NewBinaryHeap(capacity int, heapType HeapType) *BinaryHeap {
 	return &BinaryHeap{
-		data: make([]int, capacity),
+		data:     make([]int, capacity),
 		capacity: capacity,
-		size: 0,
+		size:     0,
 		heapType: heapType,
 	}
+}
+
+func HeapifyArray(arr []int, heapType HeapType) *BinaryHeap {
+	heap := &BinaryHeap{
+		data:     arr,
+		capacity: len(arr),
+		size:     len(arr),
+		heapType: heapType,
+	}
+
+	// heapify the array
+	n := heap.size / 2 // n is the last non-leaf node
+
+	for i := n; i >= 0; i-- {
+		heap.heapify(i)
+	}
+
+	return heap
 }
 
 func (h *BinaryHeap) GetData() []int {
@@ -47,21 +65,23 @@ func (h *BinaryHeap) Pop() int {
 }
 
 func (h *BinaryHeap) heapify(index int) {
-	left := getLeftChildIndex(index)
-	right := getRightChildIndex(index)
-	smallest := index
+	leftIdx := getLeftChildIndex(index)
+	rightIdx := getRightChildIndex(index)
+	// refIndex is the index of the smallest element
+	// if the heap is a min heap, otherwise it is the largest element
+	refIndex := index
 
-	if left < h.size && h.compare(h.data[left], h.data[smallest]) {
-		smallest = left
+	if leftIdx < h.size && h.compare(h.data[leftIdx], h.data[refIndex]) {
+		refIndex = leftIdx
 	}
 
-	if right < h.size && h.compare(h.data[right], h.data[smallest]) {
-		smallest = right
+	if rightIdx < h.size && h.compare(h.data[rightIdx], h.data[refIndex]) {
+		refIndex = rightIdx
 	}
 
-	if smallest != index {
-		swap(h.data, index, smallest)
-		h.heapify(smallest)
+	if refIndex != index {
+		swap(h.data, index, refIndex)
+		h.heapify(refIndex)
 	}
 }
 
@@ -99,7 +119,12 @@ func (h *BinaryHeap) compare(a, b int) bool {
 	if h.heapType == MinHeap {
 		return a < b
 	}
-	return a > b
+
+	if h.heapType == MaxHeap {
+		return a > b
+	}
+
+	return false
 }
 
 func swap(arr []int, i, j int) {
