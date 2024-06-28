@@ -15,6 +15,7 @@ func TestSorting(t *testing.T) {
 	algorithms := []Sorting{
 		&InsertionSort{},
 		&HeapSort{},
+		&ShellSort{},
 	}
 
 	tests := buildTestData()
