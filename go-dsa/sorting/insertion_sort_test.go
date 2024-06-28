@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-func TestHeapSort(t *testing.T) {
+func TestInsertionSort(t *testing.T) {
 
 	tests := []struct {
 		input    []int
@@ -15,5 +15,5 @@ func TestHeapSort(t *testing.T) {
 		{[]int{10, 20, 15, 40, 50, 100, 25, 45, 5, 35}, []int{5, 10, 15, 20, 25, 35, 40, 45, 50, 100}},
 	}
 
-	runTests(t, tests, &HeapSort{})
+	runTests(t, tests, &InsertionSort{})
 }
