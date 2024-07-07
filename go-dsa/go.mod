@@ -1,4 +1,4 @@
-module go-dsa
+module github.com/giovannymassuia/ds-a/go-dsa
 
 go 1.21.0
 
