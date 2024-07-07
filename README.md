@@ -2,15 +2,41 @@
 
 Data Structures and Algorithms
 
-## Data Structures
+## Go implementations
 
+- Heap
+  - *Binary heap*
+  - *Max heap*
+  - *Min heap*
+- Sorting
+  - *Insertion sort*
+  - *Heap sort*
+  - *Merge sort*
+  - *Shell sort*
+- Tree
+  - *DFS - Depth First Search*
+    - *In-order*
+    - *Pre-order*
+    - *Post-order*
+  - *BFS - Breadth First Search*
+- K-array tree
+  - *DFS - Depth First Search*
+    - *In-order*
+    - *Pre-order*
+    - *Post-order*
+  - *BFS - Breadth First Search*
 - Trie
     - *Routes resolution*
 
-## Algorithms
+## Java implementations
 
 - Dijkstra's Algorithm
-    - *Shortest path*
+  - *Shortest path*
+- Trie
+  - *Routes resolution*
+- Triplicate Number
+  - *eulernet*
+  - *Find the triplicate number in an array*
 
 ## Automated Tests
 
