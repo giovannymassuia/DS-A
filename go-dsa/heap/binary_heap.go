@@ -29,7 +29,7 @@ func HeapifyArray(arr []int, heapType HeapType) *BinaryHeap {
 	}
 
 	// heapify the array
-	n := heap.size / 2 // n is the last non-leaf node
+	n := heap.size/2 - 1 // n is the last non-leaf node
 
 	for i := n; i >= 0; i-- {
 		heap.heapify(i)
