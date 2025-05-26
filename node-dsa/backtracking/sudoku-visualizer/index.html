@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sudoku</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+      text-align: center;
+    }
+
+    #board {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 20px auto;
+    }
+
+    .row {
+      display: flex;
+    }
+
+    .cell {
+      width: 50px;
+      height: 50px;
+      border: 1px solid #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+    }
+
+    .grid {
+      border: 2px solid #000;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .highlight-fill {
+      background-color: yellowgreen;
+    }
+
+    .highlight-check {
+      background-color: yellow;
+    }
+
+    .highlight-error {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sudoku Visualizer</h1>
+  <p>Visualize the process of solving a Sudoku puzzle using backtracking.</p>
+  <div id="board">
+  </div>
+  <button id="generate-btn">Generate Sudoku</button>
+  <button id="solve-btn">Solve Sudoku</button>
+
+<!--  slider for speed -->
+  <div>
+    <label for="speed-slider">Speed:</label>
+    <input type="range" id="speed-slider" min="1" max="500" value="200">
+    <span id="speed-value">500ms</span>
+  </div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
