@@ -77,6 +77,24 @@ function solveSudoku(board: string[][], numbers = 9): boolean {
   return true; // Solved
 }
 
+function prettyPrintBoard(board: string[][]): void {
+  const gridSize = board.length === 4 ? 2 : board.length === 9 ? 3 : 1;
+
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[i].length; j++) {
+      process.stdout.write(board[i][j] + " ");
+      if ((j + 1) % gridSize === 0 && j < board[i].length - 1) {
+        process.stdout.write("  "); // Add space between grids
+      }
+    }
+    console.log(); // New line after each row
+
+    if ((i + 1) % gridSize === 0 && i < board.length - 1) {
+      console.log(); // Add a blank line between grids
+    }
+  }
+}
+
 test("sudoku-solver", () => {
   const board = [
     ["5", "3", ".", ".", "7", ".", ".", ".", "."],
@@ -92,19 +110,7 @@ test("sudoku-solver", () => {
 
   solveSudoku(board);
 
-  // pretty print the board, grid by grid with spaces around them
-  for (let i = 0; i < board.length; i++) {
-    for (let j = 0; j < board[i].length; j++) {
-      process.stdout.write(board[i][j] + " ");
-      if ((j + 1) % 3 === 0 && j < board[i].length - 1) {
-        process.stdout.write("  "); // Add space between grids
-      }
-    }
-    console.log(); // New line after each row
-    if ((i + 1) % 3 === 0 && i < board.length - 1) {
-      console.log(); // Add a blank line between grids
-    }
-  }
+  prettyPrintBoard(board);
 
   deepEqual(board, [
       ["5", "3", "4",   "6", "7", "8",   "9", "1", "2"],
@@ -136,7 +142,7 @@ test("sudoku-solver 98% solved", () => {
 
   solveSudoku(board);
 
-  console.log(board);
+  prettyPrintBoard(board)
 
   deepEqual(board, [
     ["5", "3", "4", "6", "7", "8", "9", "1", "2"],
@@ -162,7 +168,8 @@ test("sudoku-solver 4x4 with 4 numbers", () => {
 
   solveSudoku(board, 4);
 
-  console.log(board);
+  //console.log(board);
+  prettyPrintBoard(board);
 
   deepEqual(board, [
       ["1", "3", "4", "2"],
@@ -183,7 +190,8 @@ test("sudoku-solver 3x3 with 3 numbers", () => {
 
   solveSudoku(board, 3);
 
-  console.log(board);
+  // console.log(board);
+  prettyPrintBoard(board);
 
   deepEqual(board, [
       ["1", "3", "2"],
