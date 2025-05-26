@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/DS-A.iml" filepath="$PROJECT_DIR$/.idea/DS-A.iml" />
       <module fileurl="file://$PROJECT_DIR$/go-dsa/go-dsa.iml" filepath="$PROJECT_DIR$/go-dsa/go-dsa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/node-dsa/node-dsa.iml" filepath="$PROJECT_DIR$/node-dsa/node-dsa.iml" />
     </modules>
   </component>
 </project>
